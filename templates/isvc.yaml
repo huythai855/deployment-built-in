@@ -12,10 +12,10 @@ spec:
         name: {{ .Values.modelFormat }}
       {{- if .Values.protocolVersion }}
       protocolVersion: {{ .Values.protocolVersion }}
-      {{- endif }}
+      {{- end }}
       {{- if .Values.runtime }}
       runtime: {{ .Values.runtime }}
-      {{- endif }}
+      {{- end }}
       storageUri: {{ .Values.storageUri | quote }}
       resources:
         requests:
@@ -26,4 +26,4 @@ spec:
           memory: "{{ .Values.memoryLimit }}Gi"
           {{- if and .Values.gpuLimit (gt (int .Values.gpuLimit) 0) }}
           nvidia.com/gpu: {{ .Values.gpuLimit | quote }}
-          {{- endif }}
+          {{- end }}
