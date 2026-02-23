@@ -1,0 +1,29 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: {{ .Values.serviceName }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    deployment_id: {{ .Values.deploymentId | quote }}
+spec:
+  predictor:
+    model:
+      modelFormat:
+        name: {{ .Values.modelFormat }}
+      {{- if .Values.protocolVersion }}
+      protocolVersion: {{ .Values.protocolVersion }}
+      {{- endif }}
+      {{- if .Values.runtime }}
+      runtime: {{ .Values.runtime }}
+      {{- endif }}
+      storageUri: {{ .Values.storageUri | quote }}
+      resources:
+        requests:
+          cpu: {{ .Values.cpuRequest | quote }}
+          memory: "{{ .Values.memoryRequest }}Gi"
+        limits:
+          cpu: {{ .Values.cpuLimit | quote }}
+          memory: "{{ .Values.memoryLimit }}Gi"
+          {{- if and .Values.gpuLimit (gt (int .Values.gpuLimit) 0) }}
+          nvidia.com/gpu: {{ .Values.gpuLimit | quote }}
+          {{- endif }}

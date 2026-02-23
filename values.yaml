@@ -1,0 +1,24 @@
+# Values for deployment-built-in
+nameOverride: ""
+fullnameOverride: ""
+
+pvName: "pv-example"
+pvcName: "pvc-example"
+serviceName: "service-example"
+namespace: "default"
+deploymentId: "12345"
+username: "testuser"
+storageSize: "5Gi"
+storageClass: "juicefs-sc-static"
+volumeHandle: "jfs-volume"
+secretName: "juicefs-csi-secret"
+
+modelFormat: "sklearn"
+protocolVersion: ""
+runtime: ""
+storageUri: ""
+cpuRequest: "1"
+cpuLimit: "2"
+memoryRequest: "2" # in Gi
+memoryLimit: "4" # in Gi
+gpuLimit: 0

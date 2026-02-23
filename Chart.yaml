@@ -1,0 +1,6 @@
+apiVersion: v2
+name: deployment-built-in
+description: Helm chart for built-in model deployments
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
